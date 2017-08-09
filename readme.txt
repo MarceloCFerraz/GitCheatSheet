@@ -1,3 +1,3 @@
 Teste de arquivo de texto
 
-shausha
+Este arquivo foi adicionado ao github
