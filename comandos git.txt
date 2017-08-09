@@ -10,3 +10,5 @@ git checkout -d <branch a ser deletada>
 
 <Tem q estar na branch q vai receber os arquivos> 
 git merge <branch que vai mandar os arquivos>
+
+
