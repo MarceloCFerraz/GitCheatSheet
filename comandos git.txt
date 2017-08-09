@@ -15,7 +15,7 @@ git merge <branch que vai mandar os arquivos>
             $ git branch master
             $ git merge <outro branch>       ou       $ git rebase <outro branch>
 
-git stash e git stash apply
+git stash, git stash apply e git clear
 
 
 
