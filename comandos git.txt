@@ -1,0 +1,9 @@
+git remote add origin <endereço> (adiciona uma origem)
+git remote (mostra pra onde pode upar os arquivos)
+git push -u <origem> <branch atual>
+git clone <endereço do repositório a ser clonado> <nome do clone>
+ls (lista os arquivos dentro do repositorio local)
+git checkout -b <nome do novo branch> (cria novo branch)
+git branch (lista os branches)
+git checkout <branch destino>
+git checkout -d <branch a ser deletada>
