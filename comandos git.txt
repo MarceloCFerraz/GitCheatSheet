@@ -7,3 +7,6 @@ git checkout -b <nome do novo branch> (cria novo branch)
 git branch (lista os branches)
 git checkout <branch destino>
 git checkout -d <branch a ser deletada>
+
+<Tem q estar na branch q vai receber os arquivos> 
+git merge <branch que vai mandar os arquivos>
