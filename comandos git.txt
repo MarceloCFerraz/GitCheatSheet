@@ -16,7 +16,10 @@ git merge <branch que vai mandar os arquivos>
             $ git merge <outro branch>       ou       $ git rebase <outro branch>
 
 git stash, git stash apply e git clear
-
-
+git config -- global alias.<atalho q vc vai criar> <coisa q o atalho vai substituir> : cria atalhos
+git tag -a <versiona a tag> -m "<mensagem aq>" : cria tags para as versões de commits
+git push origin master --tags : upa as tags para o repositório origin
+git revert <codigo de commit que quer reverter sem deletar>
+git push :<tag que quer apagar>     : Apaga a tag especificada da origem (também pode ser usado para apagar branches que já foram upados para o sistema)
 
 
