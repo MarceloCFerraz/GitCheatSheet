@@ -175,7 +175,7 @@ git rebase -i <commit-hash>~<n>
 
 This command will open an interactive window using your configured default editor for you to individually choose what to do to the commit. To remove it, mark it as `drop` in the interactive window and `start rebase`.
 
-Again, this will rewrite all your history, so at least make a copy of your repo with a clean `git clone <repo-link> --mirror` somewhere else. This will download your repo in a different format. It basically download mostly refs, so prefer to use it as a back up.
+Again, this will rewrite all your history, so at least make a copy of your repo with a clean `git clone --mirror <repo-link>` somewhere else. This will download your repo in a different format. It basically download mostly refs, so prefer to use it as a back up.
 
 Regretted it? Then do this:
 1. `git reflog`
@@ -205,9 +205,17 @@ This is a faster alternative to `git-filter-branch`, but a lot faster. Works for
 	- go to bin folder
 	- copy the path to that folder
 	- on windows, open PowerShell and type 
-		- `[Environment]::SetEnvironmentVariable("JAVA_HOME", "<paste the path to bin folder here>", "Machine")` and then 
-		- `[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + $env:JAVA_HOME, "Machine")`
-		- You can also replace `Machine` with `User` and then only you will have access to Java
+```powershell
+[Environment]::SetEnvironmentVariable("JAVA_HOME", "<paste the path to bin folder here>", "Machine")
+```
+
+And then: 
+
+```powershell
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + $env:JAVA_HOME, "Machine")
+```
+You can also replace `Machine` with `User` and then only you will have access to Java
+
 3. Download [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
 4. Do a clean clone of your repo with `git clone --mirror <link to your repo> [OPTIONAL] <specify output dir>`. This will download a bare repo, which doesn't contain your files but all your working history
 5. Run `java --jar <bfg jar file> --delete-files [<files or file extension>] <your bare repo dir>`
