@@ -161,9 +161,67 @@ git cherry-pick <commit-hash>
 
 - `<commit-hash>`: hash of the commit to recover.
 
-Note: If you have uncommitted changes in your local repo, either commit or stash them before running `cherry-pick`. If you stashed changes, use `git stash apply` to get your changes back after `cherry-pick`.
+Note: If you have uncommitted changes in your local repo, either commit or `stash` changes them before running `cherry-pick`. Check out how to stash below.
 
 After running `cherry-pick`, stage changes with `git add` and commit changes again. If you rolled back more than one commit, do this for every commit you wish to recover individually. 
+
+## Stash Changes
+
+Stash basically get your changes on the working tree and save them for later. That's useful when you have to pull or push and don't want to commit those changes yet for whatever reason.
+
+To stash everything, use:
+
+```bash
+git stash
+```
+
+You can see a list of stashes you did with:
+
+```bash
+git stash list
+```
+
+To put stashed changes back to the working tree, use:
+
+```bash
+git stash apply
+```
+
+
+These commands are general, meaning they will stash everything and apply everything from and to your working tree. However, you can also be specific on what you want to stash. To stash a specific file, you can use the following command:
+
+```bash
+git stash push <path-to-file>
+```
+
+You can also stash multiple files by specifying each file path:
+
+```bash
+git stash push <path-to-file1> <path-to-file2>
+```
+
+And if you want to stash all the files in a specific folder, you can do so by specifying the folder path¹:
+
+```bash
+git stash push <path-to-folder>
+```
+
+Note: `git stash` will stash the changes and revert the files back to your last commit. To recover what you stashed, apply your stash again. 
+
+You can also specify what stash you want to apply. To do so, first use `git stash list` and then use:
+
+```bash
+git stash apply stash@{n}
+```
+
+`n` is the number of the stash on the list.
+
+You can clear your stash list with
+
+
+```bash
+git stash clear
+```
 
 ## Remove a Commit From Git Logs
 
@@ -205,6 +263,7 @@ This is a faster alternative to `git-filter-branch`, but a lot faster. Works for
 	- go to bin folder
 	- copy the path to that folder
 	- on windows, open PowerShell and type 
+
 ```powershell
 [Environment]::SetEnvironmentVariable("JAVA_HOME", "<paste the path to bin folder here>", "Machine")
 ```
