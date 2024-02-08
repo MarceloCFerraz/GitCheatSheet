@@ -95,7 +95,35 @@ Use option `s` to split hunk into smaller hunks then go through them individuall
 - `new hunk 1` = line 10
 - `new hunk 2` = line 12
 
-Then we could either add hunks to stage by typing option `y` or ignore it with option `n`. After the last hunk the command will finish unless you choose another option besides `y` or `n` such as `j`, `J`, `g` or `/`.  Choose option `?` to read an explanation of each option (recommended). You can type `q`  and hit `Enter` to quit any time.
+Then we could either add hunks to stage by typing option `y` or ignore it with option `n`. If the hunk is too small to be splitted, you can try to manually edit it with option `e` instead. This will open a diff file. Then you can:
+- Delete lines with `+ ` to remove them from hunk (this won't delete changes, just remove it from hunk)
+- Replace `- ` with `  ` to remove deleted lines from hunk (this won't bring deleted lines back, just remove them from the hunk)
+
+Let's illustrate. Let's suppose we have a file with these changes:
+
+```diff
+  x = int(input("Type a number: "))
+- z = y / x
++ if x > 0:
++   print("X is valid")
++   z = y / x
+  print(z)
+```
+
+In this case, we're simply avoiding an error of a division by zero. But what if we don't want to include the message `X is valid` in this commit for whatever reason? Then whe could use `git add -p` and, supposing this was the only change (otherwise, we could simply ignore unrelated sections or add related sections to this fix), we can then select option `e` to edit hunk and change it to something like this:
+
+```diff
+  x = int(input("Type a number: "))
+- z = y / x
++ if x > 0:
++   z = y / x
+  print(z)
+```
+Then we could commit these changes and add the removed print in the next commits. It's a bit tricky to make it work sometimes as git simply does not allow you to do some removals, but it is something you should try out a couple of times until you get the hang of it (I myself am not there yet).
+
+Then, after going through all hunks, the add command will finish unless you choose another option besides `y` or `n` such as `j`, `J`, `g` or `/`.  Choose option `?` to read an explanation of each option (recommended). 
+
+You can type `q` to quit any time.
 
 ## Rollback Commits
 
