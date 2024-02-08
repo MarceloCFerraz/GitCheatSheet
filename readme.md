@@ -1,3 +1,19 @@
+## Notes
+Every time something is surrounded by `<>`, assume you should replace its content with something relative to your specific context. Factors such as the operating system, environment, and various other considerations can affect what works best for your specific case. 
+
+For example:
+
+```bash
+# this:
+git clone <repo-link>
+
+# could be something like this:
+git clone https://github.com/MarceloCFerraz/GitCheatSheet.git
+
+# or something like this:
+git clone git@github.com:MarceloCFerraz/GitCheatSheet.git
+```
+
 ## Fix Last Commit Message
 
 To fix the last commit message, you can use the command:
@@ -19,17 +35,17 @@ For viewing logs of all commits, including pulls, resets, and rebases, you can u
 ## Messing with Staging Area
 ### Unstaged
 
-- `git checkout -- path/to/file/or/dir` to discard all changes on a specific file or folder
+- `git checkout -- <path-to-file-or-dir>` to discard all changes on a specific file or folder
 - `git checkout --` to delete all changes on all files and folders at one
 ### Staged
 
 - `git reset --`: remove everything from stage
-- `git reset -- path/to/file`: remove only a specific file from stage
-- `git reset --hard HEAD path/to/file` discard all changes on a specific file of folder
+- `git reset -- <path-to-file>`: remove only a specific file from stage
+- `git reset --hard HEAD <path-to-file>` discard all changes on a specific file of folder
 - `git reset --hard HEAD` discard all changes on all files and folders at once
-- (RECOMMENDED) `git reset HEAD` + `git checkout --` to unstage first and only then discard changes
-- `git rm --cached path/to/file`: remove a specific file from stage and also deletes the file from your working directory
-- `git restore --stage path/to/file`: remove a specific file from stage but don't delete it
+- `git reset HEAD` + `git checkout --` to unstage first and only then discard changes. Prefer this way over previously mentioned alternatives.
+- `git rm --cached <path-to-file>`: remove a specific file from stage and also deletes the file from your working directory
+- `git restore --stage <path-to-file>`: remove a specific file from stage but don't delete it
 
 Both `checkout --` and `reset --hard HEAD` replace the content of updated files with the contents of the same file on the last commit. The differences are:
 
