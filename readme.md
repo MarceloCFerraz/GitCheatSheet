@@ -37,6 +37,13 @@ For viewing logs of all commits, including pulls, resets, and rebases, you can u
 
 - `git checkout -- <path-to-file-or-dir>` to discard all changes on a specific file or folder
 - `git checkout --` to delete all changes on all files and folders at one
+- `git clean` this command removes untracked files from your working directory. Here's how you can use it:
+	- `-f` or `--force`: Git clean will not run unless you include this because it's a destructive operation that will delete files.
+	- `-d`: This tells the command to remove untracked directories as well.
+ 	- `-n`: does a *dry run* (list the files and directories that would be removed if this flag were not used). 
+
+**Please be careful** when using `git clean`, as it will permanently delete the unstaged files and directories. Make sure you have a backup or you are sure you want to delete these files. It's a good practice to do a dry run to see what will be removed.
+
 ### Staged
 
 - `git reset --`: remove everything from stage
