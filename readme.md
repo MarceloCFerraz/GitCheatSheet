@@ -68,7 +68,12 @@ You can compare your local changes with the same file on the remote server using
 ```bash
 git fetch origin
 ```
-`git fetch` updates your local knowledge of the remote repository without making any changes to your local branches. This ensures that you're comparing your local changes to the most recent state of the remote branch. 
+`git fetch` updates your local knowledge of the remote repository without changing your local branches. This ensures that you're comparing your local changes to the most recent state of the remote branch. You can also combine it with other useful tags:
+
+- `--all`: fetch from all remotes
+- `--set-upstream`: set upstream for git pull/fetch
+- `-t` or `--tags`: fetch all tags and associated objects
+- `-n`: do not fetch all tags (same as `--no-tags`)
 
 2. Run the `git diff` command to see the differences between your local branch and the remote branch:
 ```bash
@@ -84,6 +89,28 @@ If you want to see the differences for a specific file, you can specify the file
 git diff <local branch> origin/<remote branch> -- <file path>
 ```
 Just replace `<file path>` with the actual path of your file. This will show you the differences between your local version of the file and the version of the file on the remote branch. 
+
+## Chechout to remote branch or tag
+
+This is pretty similar to the previous topic, you first fetch the latest updates on the remote server first with `git fetch --all` or `git fetch --tags` and then checkout to the desired branch:
+
+```bash
+git fetch --all
+git checkout origin/my-branch
+```
+
+You can optionally git a custom name to your local branch:
+
+```bash
+git checkout -b my-local-branch origin/my-branch
+```
+
+Same applies to tags, but tags have a small difference on how you do it:
+
+```bash
+git fetch --all --tags
+git checkout -b my-local-tag-branch your-remote-tag
+```
 
 ## Split Changes On The Same File Into Different Commits
 
